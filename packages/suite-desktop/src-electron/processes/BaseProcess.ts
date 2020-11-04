@@ -8,7 +8,7 @@ export type Status = {
     process: boolean;
 };
 
-class BaseProcess {
+abstract class BaseProcess {
     process: ChildProcess | null;
     resourceName: string;
     processName: string;
@@ -37,12 +37,7 @@ class BaseProcess {
      * - service: The service is working
      * - process: The process is running
      */
-    async status() {
-        return {
-            service: false,
-            process: false,
-        };
-    }
+    abstract status(): Promise<{ service: boolean; process: boolean }>;
 
     /**
      * Start the bundled process

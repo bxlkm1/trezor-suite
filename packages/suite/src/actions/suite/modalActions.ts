@@ -127,7 +127,7 @@ export const onPassphraseSubmit = (
     value: string,
     passphraseOnDevice: boolean,
     hasEmptyPassphraseWallet: boolean,
-) => async (dispatch: Dispatch, getState: GetState) => {
+) => (dispatch: Dispatch, getState: GetState) => {
     const { device } = getState().suite;
     if (!device) return;
 
@@ -167,7 +167,7 @@ export const onPassphraseSubmit = (
     });
 };
 
-export const onReceiveConfirmation = (confirmation: boolean) => async (dispatch: Dispatch) => {
+export const onReceiveConfirmation = (confirmation: boolean) => (dispatch: Dispatch) => {
     TrezorConnect.uiResponse({
         type: UI.RECEIVE_CONFIRMATION,
         payload: confirmation,
