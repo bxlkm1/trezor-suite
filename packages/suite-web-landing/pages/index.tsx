@@ -73,7 +73,7 @@ const StyledHeadline = styled(H1)<{ size?: number }>`
 const StyledSubheadline = styled(P)`
     font-size: 20px;
     font-weight: ${variables.FONT_WEIGHT.MEDIUM};
-    color: ${colors.BLACK50} !important;
+    color: ${colors.NEUE_TYPE_LIGHT_GREY} !important;
     margin-bottom: 65px;
 `;
 
@@ -82,7 +82,7 @@ const StyledP = styled(P)`
         font-size: 20px;
         line-height: 34px;
         font-weight: ${variables.FONT_WEIGHT.MEDIUM};
-        color: ${colors.BLACK50};
+        color: ${colors.NEUE_TYPE_LIGHT_GREY};
     }
 `;
 

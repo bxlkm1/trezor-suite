@@ -5,13 +5,14 @@ import { tippy } from './tippy.style';
 import colors from '../../config/colors';
 import { Link } from '../typography/Link';
 import { FONT_SIZE, FONT_WEIGHT } from '../../config/variables';
+import { SuiteThemeColors } from '../../support/types';
 
-const tooltipGlobalStyles = `
+const tooltipGlobalStyles = (props: { theme: SuiteThemeColors }) => `
 ${tippy}
 
 .tippy-tooltip {
-    background: ${colors.NEUE_BG_TOOLTIP};
-    color: ${colors.WHITE};
+    background: ${props.theme.NEUE_BG_TOOLTIP};
+    color: ${props.theme.NEUE_TYPE_WHITE};
     font-weight: ${FONT_WEIGHT.MEDIUM};
     border-radius: 5px;
     font-size: ${FONT_SIZE.TINY};
@@ -25,25 +26,25 @@ ${tippy}
 
 .tippy-tooltip[data-placement^='top'] >
     .tippy-arrow {
-        border-top-color: ${colors.NEUE_BG_TOOLTIP};
+        border-top-color: ${props.theme.NEUE_BG_TOOLTIP};
     }
 
 
 .tippy-tooltip[data-placement^='bottom'] >
     .tippy-arrow {
-        border-bottom-color: ${colors.NEUE_BG_TOOLTIP};
+        border-bottom-color: ${props.theme.NEUE_BG_TOOLTIP};
     }
 
 
 .tippy-tooltip[data-placement^='left'] >
     .tippy-arrow {
-        border-left-color: ${colors.NEUE_BG_TOOLTIP};
+        border-left-color: ${props.theme.NEUE_BG_TOOLTIP};
     }
 
 
 .tippy-tooltip[data-placement^='right'] >
     .tippy-arrow {
-        border-right-color: ${colors.NEUE_BG_TOOLTIP};
+        border-right-color: ${props.theme.NEUE_BG_TOOLTIP};
     }
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BuyProviderInfo } from 'invity-api';
-import { colors, variables } from '@trezor/components';
+import { variables } from '@trezor/components';
 import { CoinmarketPaymentType, CoinmarketExchangeProviderInfo } from '@wallet-components';
 import { TradeExchange } from '@wallet-reducers/coinmarketReducer';
 import { formatDistance } from 'date-fns';
@@ -18,14 +18,14 @@ const Wrapper = styled.div`
     flex: 1;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid ${colors.NEUE_STROKE_GREY};
+    border: 1px solid ${props => props.theme.NEUE_STROKE_GREY};
     border-radius: 4px;
     padding: 12px 0;
 
     &:hover {
-        background: ${colors.WHITE};
-        border: 1px solid ${colors.WHITE};
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        color: ${props => props.theme.NEUE_BG_WHITE};
+        border: 1px solid ${props => props.theme.NEUE_TYPE_WHITE};
+        box-shadow: 0 1px 2px 0 ${props => props.theme.BOX_SHADOW_BLACK_20};
     }
 `;
 
@@ -43,7 +43,7 @@ const ProviderColumn = styled(Column)`
 const Row = styled.div`
     display: flex;
     align-items: center;
-    color: ${colors.NEUE_TYPE_DARK_GREY};
+    color: ${props => props.theme.NEUE_TYPE_DARK_GREY};
     font-weight: ${variables.FONT_WEIGHT.MEDIUM};
 `;
 
@@ -54,7 +54,7 @@ const RowSecond = styled(Row)`
 const SmallRow = styled.div`
     padding-top: 8px;
     display: flex;
-    color: ${colors.NEUE_TYPE_LIGHT_GREY};
+    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     font-weight: ${variables.FONT_WEIGHT.MEDIUM};
     font-size: ${variables.FONT_SIZE.TINY};
 `;

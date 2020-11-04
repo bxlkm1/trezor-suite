@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, Tooltip, TooltipProps, colors, variables } from '@trezor/components';
+import { Icon, Tooltip, TooltipProps, useTheme, variables } from '@trezor/components';
 
 const Wrapper = styled.div`
     display: flex;
-    color: ${colors.BLACK50};
+    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     align-items: center;
     justify-content: center;
 `;
@@ -27,12 +27,13 @@ interface Props {
 }
 
 const ColHeader = ({ children, tooltipContent, ...rest }: Props) => {
+    const theme = useTheme();
     return (
         <Wrapper {...rest}>
             <Text>{children}</Text>
             {tooltipContent && (
                 <Tooltip maxWidth={285} placement="top" content={tooltipContent}>
-                    <StyledIcon icon="INFO_ACTIVE" color={colors.NEUE_TYPE_LIGHT_GREY} size={16} />
+                    <StyledIcon icon="INFO_ACTIVE" color={theme.NEUE_TYPE_LIGHT_GREY} size={16} />
                 </Tooltip>
             )}
         </Wrapper>

@@ -37,7 +37,7 @@ const Title = styled.span`
     margin-left: 10px;
     flex: 1;
     font-weight: 500;
-    color: ${colors.NEUE_TYPE_DARK_GREY};
+    color: ${props => props.theme.NEUE_TYPE_DARK_GREY};
 `;
 
 const StyledButton = styled(Button)`

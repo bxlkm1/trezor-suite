@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Translation } from '@suite-components';
 import { getStatusMessage } from '@wallet-utils/coinmarket/buyUtils';
-import { colors, variables, Icon } from '@trezor/components';
+import { useTheme, variables, Icon, SuiteThemeColors } from '@trezor/components';
 import { Trade } from '@wallet-reducers/coinmarketReducer';
 
 interface Props {
@@ -25,31 +25,31 @@ const StyledIcon = styled(Icon)`
     margin-right: 3px;
 `;
 
-const getData = (status: Trade['data']['status']) => {
+const getData = (status: Trade['data']['status'], theme: SuiteThemeColors) => {
     const message = getStatusMessage(status);
     switch (message) {
         case 'TR_BUY_STATUS_PENDING':
             return {
                 icon: 'CLOCK',
-                color: colors.NEUE_TYPE_ORANGE,
+                color: theme.NEUE_TYPE_ORANGE,
                 statusMessageId: message,
             } as const;
         case 'TR_BUY_STATUS_PENDING_GO_TO_GATEWAY':
             return {
                 icon: 'CLOCK',
-                color: colors.NEUE_TYPE_ORANGE,
+                color: theme.NEUE_TYPE_ORANGE,
                 statusMessageId: message,
             } as const;
         case 'TR_BUY_STATUS_ERROR':
             return {
                 icon: 'CROSS',
-                color: colors.NEUE_TYPE_RED,
+                color: theme.NEUE_TYPE_RED,
                 statusMessageId: message,
             } as const;
         case 'TR_BUY_STATUS_SUCCESS':
             return {
                 icon: 'CHECK',
-                color: colors.NEUE_TYPE_GREEN,
+                color: theme.NEUE_TYPE_GREEN,
                 statusMessageId: message,
             } as const;
         // no default
@@ -57,7 +57,8 @@ const getData = (status: Trade['data']['status']) => {
 };
 
 const Status = ({ status, className }: Props) => {
-    const data = getData(status);
+    const theme = useTheme();
+    const data = getData(status, theme);
     return (
         <Wrapper color={data.color} className={className}>
             <StyledIcon color={data.color} size={10} icon={data.icon} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, colors, variables, Icon, Button } from '@trezor/components';
+import { Input, useTheme, variables, Icon, Button } from '@trezor/components';
 import { AddressLabeling, Translation, ReadMoreLink } from '@suite-components';
 import { InputError } from '@wallet-components';
 import { scanQrRequest } from '@wallet-actions/sendFormActions';
@@ -48,6 +48,7 @@ interface Props {
 }
 
 const Address = ({ output, outputId, outputsCount }: Props) => {
+    const theme = useTheme();
     const {
         account,
         removeOutput,
@@ -117,7 +118,7 @@ const Address = ({ output, outputId, outputsCount }: Props) => {
                             composeTransaction();
                         }}
                     >
-                        <StyledIcon size={20} color={colors.BLACK50} icon="CROSS" />
+                        <StyledIcon size={20} color={theme.NEUE_TYPE_LIGHT_GREY} icon="CROSS" />
                     </Remove>
                 ) : undefined
             }

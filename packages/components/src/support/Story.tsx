@@ -1,7 +1,7 @@
 import React from 'react';
 import randomColor from 'randomcolor';
-import styled, { createGlobalStyle } from 'styled-components';
-import { tooltipGlobalStyles } from '../index';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { THEME, tooltipGlobalStyles } from '../index';
 
 const GlobalStyle = createGlobalStyle`
     ${tooltipGlobalStyles}
@@ -14,17 +14,16 @@ const Wrapper = styled.div`
     display: flex;
     height: 100%;
     flex-wrap: wrap;
+    background: ${props => props.theme.NEUE_BG_WHITE};
 `;
 
-interface StoryWrapperProps {
-    children: any;
-}
-
-const StoryWrapper = ({ children }: StoryWrapperProps) => (
-    <Wrapper>
-        <GlobalStyle />
-        {children}
-    </Wrapper>
+const StoryWrapper = (storyFn: any) => (
+    <ThemeProvider theme={THEME.dark}>
+        <Wrapper>
+            <GlobalStyle />
+            {storyFn()}
+        </Wrapper>
+    </ThemeProvider>
 );
 
 interface StoryColumnProps {

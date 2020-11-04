@@ -2,7 +2,7 @@ import produce from 'immer';
 import { TRANSPORT, TransportInfo } from 'trezor-connect';
 import { SUITE, STORAGE } from '@suite-actions/constants';
 import { DISCOVERY } from '@wallet-actions/constants';
-import { Action, TrezorDevice, Lock } from '@suite-types';
+import { Action, TrezorDevice, Lock, SuiteTheme } from '@suite-types';
 import { LANGUAGES } from '@suite-config';
 import { isWeb } from '@suite-utils/env';
 
@@ -24,6 +24,7 @@ interface Flags {
 }
 
 interface SuiteSettings {
+    theme: SuiteTheme;
     language: typeof LANGUAGES[number]['code'];
     debug: DebugModeOptions;
 }
@@ -59,6 +60,7 @@ const initialState: SuiteState = {
         discreetModeCompleted: false,
     },
     settings: {
+        theme: 'light',
         language: 'en',
         debug: {
             invityAPIUrl: undefined,
@@ -121,6 +123,10 @@ const suiteReducer = (state: SuiteState = initialState, action: Action): SuiteSt
 
             case SUITE.SET_FLAG:
                 setFlag(draft, action.key, action.value);
+                break;
+
+            case SUITE.SET_THEME:
+                draft.settings.theme = action.payload;
                 break;
 
             case TRANSPORT.START:

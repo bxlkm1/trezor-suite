@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Switch, Box, Icon, colors, variables } from '@trezor/components';
+import { Switch, Box, Icon, useTheme, variables } from '@trezor/components';
 import * as accountUtils from '@wallet-utils/accountUtils';
 import { Props } from './Container';
 import { FormattedNumber, WalletLabeling, Translation, MetadataLabeling } from '@suite-components';
@@ -10,7 +10,7 @@ const Wrapper = styled(Box)`
     display: flex;
     width: 100%;
     align-items: center;
-    background: ${colors.WHITE};
+    color: ${props => props.theme.NEUE_BG_WHITE};
     cursor: pointer;
 
     & + & {
@@ -20,7 +20,7 @@ const Wrapper = styled(Box)`
 
 const InstanceType = styled.div`
     display: flex;
-    color: ${colors.NEUE_TYPE_DARK_GREY};
+    color: ${props => props.theme.NEUE_TYPE_DARK_GREY};
     font-weight: 500;
     font-size: ${variables.FONT_SIZE.NORMAL};
     line-height: 1.5;
@@ -35,7 +35,7 @@ const InstanceType = styled.div`
 const InstanceTitle = styled.div`
     font-weight: 500;
     line-height: 1.57;
-    color: ${colors.NEUE_TYPE_LIGHT_GREY};
+    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     font-size: ${variables.FONT_SIZE.SMALL};
     font-variant-numeric: tabular-nums;
 `;
@@ -74,6 +74,8 @@ const WalletInstance = ({
     getDiscovery,
     ...rest
 }: Props) => {
+    const theme = useTheme();
+
     const discoveryProcess = instance.state ? getDiscovery(instance.state) : null;
     const deviceAccounts = accountUtils.getAllAccounts(instance.state, accounts);
     const accountsCount = deviceAccounts.length;
@@ -105,7 +107,7 @@ const WalletInstance = ({
                         {!instance.useEmptyPassphrase && (
                             <LockIcon
                                 icon="LOCK_ACTIVE"
-                                color={colors.NEUE_TYPE_DARK_GREY}
+                                color={theme.NEUE_TYPE_DARK_GREY}
                                 size={12}
                             />
                         )}
@@ -170,7 +172,7 @@ const WalletInstance = ({
                             data-test={`${getDataTestBase()}/eject-button`}
                             icon="EJECT"
                             size={22}
-                            color={colors.NEUE_TYPE_LIGHT_GREY}
+                            color={theme.NEUE_TYPE_LIGHT_GREY}
                             onClick={() =>
                                 forgetDevice(instance) &&
                                 analytics.report({

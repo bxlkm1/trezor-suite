@@ -2,7 +2,7 @@ import * as routerActions from '@suite-actions/routerActions';
 import { MAX_WIDTH } from '@suite-constants/layout';
 import { useActions, useSelector } from '@suite-hooks';
 import { AccountLabeling } from '@suite-components';
-import { colors, Icon, variables } from '@trezor/components';
+import { Icon, variables } from '@trezor/components';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,8 +10,8 @@ const Wrapper = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
-    background: ${colors.NEUE_BG_LIGHT_GREY};
-    border-bottom: 1px solid ${colors.NEUE_STROKE_GREY};
+    background: ${props => props.theme.NEUE_BG_LIGHT_GREY};
+    border-bottom: 1px solid ${props => props.theme.NEUE_STROKE_GREY};
 `;
 
 const Content = styled.div`
@@ -32,7 +32,7 @@ const Left = styled.div`
     display: flex;
     flex: 1;
     align-items: center;
-    color: ${colors.NEUE_TYPE_LIGHT_GREY};
+    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     font-weight: ${variables.FONT_WEIGHT.DEMI_BOLD};
 `;
 

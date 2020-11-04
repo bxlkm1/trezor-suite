@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, colors, Tooltip } from '@trezor/components';
+import { Icon, useTheme, Tooltip } from '@trezor/components';
 import { Translation } from '@suite-components';
 import { ExtendedMessageDescriptor } from '@suite-types';
 
@@ -22,30 +22,30 @@ interface Props {
     iconStyle?: React.SVGAttributes<HTMLDivElement>['style'];
 }
 
-export const QuestionTooltip = ({
-    label,
-    tooltip,
-    size = 16,
-    color = colors.NEUE_TYPE_LIGHT_GREY,
-    iconStyle,
-}: Props) => (
-    <Wrapper>
-        {label && <Label>{typeof label === 'string' ? <Translation id={label} /> : label}</Label>}
-        {tooltip && (
-            <Tooltip
-                placement="top"
-                content={typeof tooltip === 'string' ? <Translation id={tooltip} /> : tooltip}
-            >
-                <Icon
-                    useCursorPointer
-                    size={size}
-                    color={color}
-                    style={iconStyle}
-                    icon="QUESTION"
-                />
-            </Tooltip>
-        )}
-    </Wrapper>
-);
+export const QuestionTooltip = ({ label, tooltip, size = 16, color, iconStyle }: Props) => {
+    const theme = useTheme();
+    const defaultColor = color ?? theme.NEUE_TYPE_LIGHT_GREY;
+    return (
+        <Wrapper>
+            {label && (
+                <Label>{typeof label === 'string' ? <Translation id={label} /> : label}</Label>
+            )}
+            {tooltip && (
+                <Tooltip
+                    placement="top"
+                    content={typeof tooltip === 'string' ? <Translation id={tooltip} /> : tooltip}
+                >
+                    <Icon
+                        useCursorPointer
+                        size={size}
+                        color={defaultColor}
+                        style={iconStyle}
+                        icon="QUESTION"
+                    />
+                </Tooltip>
+            )}
+        </Wrapper>
+    );
+};
 
 export default QuestionTooltip;

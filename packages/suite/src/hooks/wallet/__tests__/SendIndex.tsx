@@ -9,7 +9,7 @@ import { IntlProvider } from 'react-intl';
 import { DeepPartial } from 'react-hook-form';
 import { act, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
+import ThemeProvider from '@suite-support/ThemeProvider';
 import { SendContext, useSendForm } from '../useSendForm';
 
 import Outputs from '@wallet-views/send/components/Outputs';
@@ -36,15 +36,17 @@ const Index = (props: UseSendFormProps & { callback: TestCallback }) => {
     const sendContextValues = useSendForm(props);
     props.callback.getContextValues = () => sendContextValues;
     return (
-        <SendContext.Provider value={sendContextValues}>
-            {sendContextValues.isLoading && <div>Loading</div>}
-            <Header />
-            <Outputs disableAnim />
-            <Options />
-            <Fees />
-            <TotalSent />
-            <ReviewButton />
-        </SendContext.Provider>
+        <ThemeProvider>
+            <SendContext.Provider value={sendContextValues}>
+                {sendContextValues.isLoading && <div>Loading</div>}
+                <Header />
+                <Outputs disableAnim />
+                <Options />
+                <Fees />
+                <TotalSent />
+                <ReviewButton />
+            </SendContext.Provider>
+        </ThemeProvider>
     );
 };
 

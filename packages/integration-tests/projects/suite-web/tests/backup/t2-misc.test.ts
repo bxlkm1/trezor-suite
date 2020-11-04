@@ -19,7 +19,9 @@ describe('Backup', () => {
         cy.getTestElement('@backup/check-item/understands-what-seed-is').click();
         cy.getTestElement('@backup/close-button').click();
         cy.getTestElement('@notification/no-backup/button').click();
-        cy.log('at this moment, after modal was closed and opened again, no checkbox should be checked');
+        cy.log(
+            'at this moment, after modal was closed and opened again, no checkbox should be checked',
+        );
         cy.getTestElement('@backup/check-item/understands-what-seed-is').should('not.be.checked');
     });
 
@@ -44,11 +46,12 @@ describe('Backup', () => {
             force: true,
         });
         cy.getTestElement('@switch-device/wallet-instance').click();
+        cy.wait(1000);
         cy.getTestElement('@notification/no-backup/button').click();
         cy.getTestElement('@backup/check-item/understands-what-seed-is').click();
         cy.getTestElement('@backup/check-item/has-enough-time').click();
         cy.getTestElement('@backup/check-item/is-in-private').click();
         cy.task('stopEmu');
         cy.getTestElement('@backup/no-device');
-    })
+    });
 });

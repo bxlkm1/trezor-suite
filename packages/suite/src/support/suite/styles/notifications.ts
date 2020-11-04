@@ -90,8 +90,8 @@ export const notifications = `
     }
 
     .Toastify__toast--default {
-        background: ${colors.BLACK17};
-        color: ${colors.WHITE};
+        background: ${colors.NEUE_BG_LIGHT_GREY};
+        color: ${colors.NEUE_TYPE_WHITE};
     }
 
     .Toastify__toast--info {

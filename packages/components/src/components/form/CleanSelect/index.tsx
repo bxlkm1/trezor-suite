@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactSelect, { Props as SelectProps } from 'react-select';
-import { colors, variables } from '../../../config';
-import { InputVariant } from '../../../support/types';
+import { variables } from '../../../config';
+import { InputVariant, SuiteThemeColors } from '../../../support/types';
+import { useTheme } from '../../../utils';
 
 const Wrapper = styled.div`
     .react-select__single-value {
@@ -23,10 +24,15 @@ const getDropdownVisibility = (isDisabled: boolean, isFocused: boolean, isHovere
     return 'none';
 };
 
-const selectStyle = (isDropdownVisible: boolean, isHovered: boolean, minWidth = '50px') => ({
+const selectStyle = (
+    isDropdownVisible: boolean,
+    isHovered: boolean,
+    minWidth = '50px',
+    theme: SuiteThemeColors
+) => ({
     singleValue: (base: Record<string, any>) => ({
         ...base,
-        color: colors.NEUE_TYPE_LIGHT_GREY,
+        color: theme.NEUE_TYPE_LIGHT_GREY,
         border: 0,
         display: 'flex',
         width: '100%',
@@ -54,7 +60,7 @@ const selectStyle = (isDropdownVisible: boolean, isHovered: boolean, minWidth = 
             paddingRight: 3,
             marginTop: 1,
             fontWeight: variables.FONT_WEIGHT.MEDIUM,
-            color: colors.NEUE_TYPE_LIGHT_GREY,
+            color: theme.NEUE_TYPE_LIGHT_GREY,
             minWidth,
             display: 'flex',
             flexWrap: 'nowrap',
@@ -82,7 +88,7 @@ const selectStyle = (isDropdownVisible: boolean, isHovered: boolean, minWidth = 
     menu: (base: Record<string, any>) => ({
         ...base,
         minWidth: '85px',
-        color: colors.NEUE_TYPE_LIGHT_GREY,
+        color: theme.NEUE_TYPE_LIGHT_GREY,
         background: 'white',
         boxShadow: '0 4px 10px 0 rgba(0, 0, 0, 0.15)',
     }),
@@ -91,13 +97,13 @@ const selectStyle = (isDropdownVisible: boolean, isHovered: boolean, minWidth = 
     }),
     option: (base: Record<string, any>, { isFocused }: { isFocused: boolean }) => ({
         ...base,
-        background: isFocused ? colors.BLACK96 : colors.WHITE,
-        color: colors.NEUE_TYPE_DARK_GREY,
+        background: isFocused ? theme.NEUE_BG_GREY : theme.NEUE_BG_WHITE,
+        color: theme.NEUE_TYPE_DARK_GREY,
         fontSize: variables.FONT_SIZE.SMALL,
         fontWeight: variables.FONT_WEIGHT.MEDIUM,
         '&:hover': {
             cursor: 'pointer',
-            background: colors.NEUE_BG_GRAY,
+            background: theme.NEUE_BG_GREY,
         },
     }),
 });
@@ -126,13 +132,14 @@ const CleanSelect = ({
     maxSearchLength,
     ...props
 }: Props) => {
+    const theme = useTheme();
     const [isHovered, setIsHovered] = React.useState(isHoveredByDefault);
     const optionsLength = options.length;
 
     return (
         <Wrapper onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
             <ReactSelect
-                styles={selectStyle(isDropdownVisible, isHovered, minWidth)}
+                styles={selectStyle(isDropdownVisible, isHovered, minWidth, theme)}
                 classNamePrefix="react-select"
                 isSearchable={isSearchable}
                 isDisabled={optionsLength <= 1}

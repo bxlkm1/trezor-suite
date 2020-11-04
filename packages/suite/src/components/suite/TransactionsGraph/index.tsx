@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { colors, variables, Loader, Icon } from '@trezor/components';
+import styled, { useTheme } from 'styled-components';
+import { variables, Loader, Icon, colors } from '@trezor/components';
 import {
     GraphRange,
     AggregatedAccountHistory,
@@ -44,7 +44,7 @@ const Description = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: ${colors.BLACK50};
+    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     flex: 1;
 `;
 
@@ -84,6 +84,7 @@ export type Props = CryptoGraphProps | FiatGraphProps;
 
 const TransactionsGraph = React.memo((props: Props) => {
     const { isLoading, data, selectedRange, xTicks } = props;
+    const theme = useTheme();
     const { selectedView } = useGraph();
     const [maxYTickWidth, setMaxYTickWidth] = useState(20);
     const yDomain = calcYDomain(
@@ -118,7 +119,6 @@ const TransactionsGraph = React.memo((props: Props) => {
                         <RefreshIcon
                             size={14}
                             icon="REFRESH"
-                            hoverColor={colors.BLACK0}
                             onClick={() => (props.onRefresh ? props.onRefresh() : undefined)}
                         />
                     )}
@@ -140,7 +140,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                             }}
                             onMouseLeave={() => setHovered(-1)}
                         >
-                            <CartesianGrid vertical={false} stroke={colors.NEUE_BG_GRAY} />
+                            <CartesianGrid vertical={false} stroke={theme.NEUE_BG_GREY} />
 
                             <XAxis
                                 // xAxisId="primary"
@@ -148,7 +148,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                                 type="number"
                                 domain={calcXDomain(xTicks, data, selectedRange)}
                                 // width={10}
-                                stroke={colors.NEUE_BG_GRAY}
+                                stroke={theme.NEUE_BG_GREY}
                                 interval="preserveEnd"
                                 tick={<CustomXAxisTick selectedRange={selectedRange} />}
                                 ticks={xTicks}
@@ -162,7 +162,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                                 scale={selectedView}
                                 domain={yDomain}
                                 allowDataOverflow={selectedView === 'log'}
-                                stroke={colors.NEUE_BG_GRAY}
+                                stroke={theme.NEUE_BG_GREY}
                                 tick={
                                     props.variant === 'one-asset' ? (
                                         <CustomYAxisTick
@@ -229,6 +229,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                                     y2="100%"
                                     spreadMethod="reflect"
                                 >
+                                    {/* TODO: dark mode: #559c3d #5fa548 */}
                                     <stop offset="0" stopColor={colors.NEUE_BG_GREEN} />
                                     <stop offset="1" stopColor="#4cbc26" />
                                 </linearGradient>
@@ -242,6 +243,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                                     y2="100%"
                                     spreadMethod="reflect"
                                 >
+                                    {/* TODO: dark mode: #d15b5b #e75f5f */}
                                     <stop offset="0" stopColor="#d15b5b" />
                                     <stop offset="1" stopColor="#e75f5f" />
                                 </linearGradient>
