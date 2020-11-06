@@ -14,8 +14,8 @@ const Titlebar = styled.div`
     position: fixed;
     z-index: 1000000;
     position: relative;
-    background: ${props => props.theme.NEUE_TYPE_DARK_GREY};
-    color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
+    background: ${colors.NEUE_TYPE_DARK_GREY}; // not using theme on purpose
+    color: ${colors.NEUE_TYPE_LIGHT_GREY};
 `;
 
 const Drag = styled.div`
@@ -36,7 +36,7 @@ const Action = styled.div<{ isMac?: boolean; isDisabled?: boolean; isActive?: bo
     height: ${props => (props.isMac ? 12 : TITLEBAR_HEIGHT)}px;
     ${props => (props.isMac ? 'margin: 0 8px 0 0;' : 'margin: 0;')}
     ${props =>
-        props.isMac && !props.isActive && `border: 1px solid ${props.theme.NEUE_TYPE_LIGHT_GREY};`}
+        props.isMac && !props.isActive && `border: 1px solid ${colors.NEUE_TYPE_LIGHT_GREY};`}
     border-radius: ${props => (props.isMac ? 50 : 0)}px;
     background: transparent;
     -webkit-app-region: no-drag;
@@ -47,9 +47,9 @@ const Action = styled.div<{ isMac?: boolean; isDisabled?: boolean; isActive?: bo
     ${props =>
         !props.isMac &&
         `&:hover {
-            background: ${props.theme.NEUE_TYPE_LIGHT_GREY};
+            background: ${colors.NEUE_TYPE_LIGHT_GREY};
             & svg {
-                fill: ${props.theme.NEUE_TYPE_WHITE}
+                fill: ${colors.NEUE_TYPE_WHITE}
             }
         }`}
 `;
@@ -58,11 +58,11 @@ const ActionClose = styled(Action)`
     ${props =>
         !props.isMac &&
         `&:hover {
-            background: ${props.theme.NEUE_TYPE_RED};
+            background: ${colors.NEUE_TYPE_RED};
         }`}
 `;
 
-// ${props => props.isMac && props.isActive && `background: ${props => props.theme.NEUE_TYPE_RED};`}
+// ${props => props.isMac && props.isActive && `background: ${colors.NEUE_TYPE_RED};`}
 
 const ActionMinimize = styled(Action)`
     order: ${props => (props.isMac ? '0' : '1')};
@@ -105,7 +105,7 @@ const Actions = styled.div<{ isMac?: boolean; isDisabled?: boolean; isActive?: b
                 background: #fabe3e;
             }`
                 : `& > ${ActionMinimize} {
-                border: 1px solid ${props.theme.NEUE_TYPE_LIGHT_GREY};
+                border: 1px solid ${colors.NEUE_TYPE_LIGHT_GREY};
             }`
         }
     `}
