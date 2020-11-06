@@ -7,9 +7,12 @@ interface Props {
 
 const AbsoluteWrapper = styled.aside`
     width: 300px;
+    flex: 0 0 auto;
     background: ${props => props.theme.NEUE_BG_WHITE};
     border-right: 1px solid ${props => props.theme.NEUE_STROKE_GREY};
     overflow: hidden;
+    height: 100%;
+    overflow: auto;
 `;
 
 const Wrapper = styled.div`
