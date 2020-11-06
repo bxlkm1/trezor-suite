@@ -68,6 +68,7 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
         BOX_SHADOW_BLACK_15: 'rgba(0, 0, 0, 0.5)',
         BOX_SHADOW_BLACK_20: 'rgba(255, 255, 255, 0.1)',
         BOX_SHADOW_MODAL: 'rgba(0, 0, 0, 0.5)',
+        IMAGE_FILTER: 'brightness(0.8) contrast(1.2)',
     },
 } as const;
 

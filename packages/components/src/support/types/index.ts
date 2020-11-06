@@ -65,4 +65,6 @@ export interface SuiteThemeColors {
     BOX_SHADOW_BLACK_15: string;
     BOX_SHADOW_BLACK_20: string;
     BOX_SHADOW_MODAL: string;
+
+    IMAGE_FILTER?: string;
 }

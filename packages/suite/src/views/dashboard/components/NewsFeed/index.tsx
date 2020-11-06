@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled, { useTheme, css } from 'styled-components';
 import TextTruncate from 'react-text-truncate';
 import { Translation } from '@suite-components';
 import { Section } from '@dashboard-components';
@@ -42,6 +42,12 @@ const Image = styled.img`
     height: 195px;
     border-radius: 3px;
     object-fit: cover;
+
+    ${props =>
+        props.theme.IMAGE_FILTER &&
+        css`
+            filter: ${props.theme.IMAGE_FILTER};
+        `}
 `;
 
 const Title = styled.div`
