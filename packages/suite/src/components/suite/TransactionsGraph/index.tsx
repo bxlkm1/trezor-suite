@@ -140,7 +140,7 @@ const TransactionsGraph = React.memo((props: Props) => {
                             }}
                             onMouseLeave={() => setHovered(-1)}
                         >
-                            <CartesianGrid vertical={false} stroke={theme.NEUE_BG_GREY} />
+                            <CartesianGrid vertical={false} stroke={theme.NEUE_STROKE_LIGHT_GREY} />
 
                             <XAxis
                                 // xAxisId="primary"

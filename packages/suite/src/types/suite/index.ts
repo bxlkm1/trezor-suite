@@ -35,6 +35,7 @@ import { PROCESS_MODE } from '@suite-middlewares/actionBlockerMiddleware';
 export type { ExtendedMessageDescriptor } from '@suite-components/Translation/components/BaseTranslation';
 export type { AppState } from '@suite/reducers/store';
 export type { Route } from '@suite-constants/routes';
+export type { SuiteThemeColors } from '@trezor/components';
 
 type TrezorConnectEvents = TransportEvent | UiEvent | DeviceEvent | BlockchainEvent;
 
@@ -101,4 +102,4 @@ export type InjectedModalApplicationProps = {
 };
 
 export type ToastNotificationVariant = 'success' | 'info' | 'warning' | 'error';
-export type SuiteTheme = 'light' | 'dark';
+export type SuiteThemeVariant = 'light' | 'dark' | 'custom';

@@ -13,6 +13,7 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
         NEUE_BG_WHITE: '#ffffff',
         NEUE_BG_BLUE: '#1faaff',
         NEUE_BG_RED: '#d04949',
+        NEUE_BG_LIGHT_RED: '#F6E2E2',
 
         NEUE_TYPE_GREEN: '#279503',
         NEUE_TYPE_ORANGE: '#c19009',
@@ -22,10 +23,10 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
         NEUE_TYPE_LIGHT_GREY: '#808080',
         NEUE_TYPE_LIGHTER_GREY: '#bdbdbd',
         NEUE_TYPE_WHITE: '#ffffff',
-        NEUE_BG_LIGHT_RED: '#F6E2E2',
 
         NEUE_SCROLLBAR_THUMB: '#babac0',
         NEUE_STROKE_GREY: '#e8e8e8',
+        NEUE_STROKE_LIGHT_GREY: '#f4f4f4',
         NEUE_BG_TOOLTIP: '#262742',
 
         BUTTON_RED: '#cd4949',
@@ -45,9 +46,9 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
         NEUE_BG_GREY_ALT: '#262626', // same as NEUE_STROKE_GREY
         NEUE_BG_LIGHT_GREY: '#0c0c0c',
         NEUE_BG_WHITE: '#101010',
-        NEUE_BG_LIGHT_RED: '#5a1616',
         NEUE_BG_BLUE: '#197eaa', // used for big app notification (eg. new fw update)
         NEUE_BG_RED: '#ab2626', // used for big app notification
+        NEUE_BG_LIGHT_RED: '#5a1616', // used for outer glow for disconnected device status dot
 
         NEUE_TYPE_GREEN: '#6fa95c',
         NEUE_TYPE_ORANGE: '#9b813b',
@@ -60,6 +61,7 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
 
         NEUE_SCROLLBAR_THUMB: '#7F7F7F',
         NEUE_STROKE_GREY: '#262626',
+        NEUE_STROKE_LIGHT_GREY: '#1a1a1a', // graph grid
         NEUE_BG_TOOLTIP: '#151524', // improvisation
         BUTTON_RED: '#cd4949',
         BUTTON_RED_HOVER: '#b93c3c',

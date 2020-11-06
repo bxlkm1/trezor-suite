@@ -57,6 +57,7 @@ export interface SuiteThemeColors {
 
     NEUE_SCROLLBAR_THUMB: string;
     NEUE_STROKE_GREY: string;
+    NEUE_STROKE_LIGHT_GREY: string;
 
     BUTTON_RED: string;
     BUTTON_RED_HOVER: string;

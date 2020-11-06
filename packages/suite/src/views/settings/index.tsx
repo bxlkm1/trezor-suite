@@ -8,6 +8,7 @@ import {
     ActionInput,
     ActionSelect,
     Analytics,
+    Theme,
     Section,
     SectionItem,
     TextColumn,
@@ -266,6 +267,7 @@ const Settings = ({
             )}
 
             <Section title={<Translation id="TR_APPLICATION" />}>
+                <Theme />
                 <Analytics />
 
                 <SectionItem>

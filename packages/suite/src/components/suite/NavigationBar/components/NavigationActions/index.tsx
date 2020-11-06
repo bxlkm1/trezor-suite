@@ -137,11 +137,11 @@ const NavigationActions = (props: Props) => {
             <ActionsContainer desktop={isDesktop()} mobileLayout={props.isMobileLayout}>
                 <ActionItem
                     onClick={() => {
-                        setTheme(theme === 'light' ? 'dark' : 'light');
+                        setTheme(theme.variant === 'light' ? 'dark' : 'light');
                     }}
-                    isActive={theme === 'dark'}
+                    isActive={theme.variant === 'dark'}
                     label={<Translation id="TR_DISCREET" />}
-                    icon={theme === 'dark' ? 'HIDE' : 'SHOW'}
+                    icon={theme.variant === 'dark' ? 'HIDE' : 'SHOW'}
                     isMobileLayout={props.isMobileLayout}
                 />
                 <ActionItem

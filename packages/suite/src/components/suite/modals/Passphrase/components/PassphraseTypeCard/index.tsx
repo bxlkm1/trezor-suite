@@ -308,39 +308,41 @@ const PassphraseTypeCard = (props: Props) => {
                 </>
             )}
             {props.type === 'hidden' && (
-                <Row>
-                    {/* Show passphrase input */}
-                    <InputWrapper authConfirmation={props.authConfirmation}>
-                        <PassphraseInput
-                            data-test="@passphrase/input"
-                            placeholder="Enter passphrase" // TODO: Localize
-                            onChange={onChange}
-                            value={displayValue}
-                            innerRef={ref}
-                            bottomText={
-                                isTooLong ? <Translation id="TR_PASSPHRASE_TOO_LONG" /> : null
-                            }
-                            state={isTooLong ? 'error' : undefined}
-                            noTopLabel
-                            noError
-                            innerAddon={
-                                <StyledIcon
-                                    size={18}
-                                    color={theme.NEUE_TYPE_LIGHT_GREY}
-                                    icon={showPassword ? 'HIDE' : 'SHOW'}
-                                    onClick={() => {
-                                        if (typeof ref.current?.selectionStart === 'number') {
-                                            caretRef.current = ref.current.selectionStart;
-                                        }
-                                        setShowPassword(!showPassword);
-                                    }}
-                                    data-test="@passphrase/show-toggle"
-                                />
-                            }
-                        />
-                        {!isTooLong && <PasswordStrengthIndicator password={value} />}
-                    </InputWrapper>
-                </Row>
+                <>
+                    <Row>
+                        {/* Show passphrase input */}
+                        <InputWrapper authConfirmation={props.authConfirmation}>
+                            <PassphraseInput
+                                data-test="@passphrase/input"
+                                placeholder="Enter passphrase" // TODO: Localize
+                                onChange={onChange}
+                                value={displayValue}
+                                innerRef={ref}
+                                bottomText={
+                                    isTooLong ? <Translation id="TR_PASSPHRASE_TOO_LONG" /> : null
+                                }
+                                state={isTooLong ? 'error' : undefined}
+                                noTopLabel
+                                noError
+                                innerAddon={
+                                    <StyledIcon
+                                        size={18}
+                                        color={theme.NEUE_TYPE_LIGHT_GREY}
+                                        icon={showPassword ? 'HIDE' : 'SHOW'}
+                                        onClick={() => {
+                                            if (typeof ref.current?.selectionStart === 'number') {
+                                                caretRef.current = ref.current.selectionStart;
+                                            }
+                                            setShowPassword(!showPassword);
+                                        }}
+                                        data-test="@passphrase/show-toggle"
+                                    />
+                                }
+                            />
+                        </InputWrapper>
+                    </Row>
+                    {!isTooLong && <PasswordStrengthIndicator password={value} />}
+                </>
             )}
             {props.authConfirmation && (
                 // Checkbox if user fully understands what's happening when confirming empty passphrase
