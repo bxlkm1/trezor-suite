@@ -1,6 +1,7 @@
 import { ICONS } from '../../components/Icon/icons';
 import { ReactNode } from 'react';
 import { COINS } from '../../components/logos/CoinLogo/coins';
+import { THEME } from '../../config/colors';
 
 export type TextAlign = 'left' | 'center' | 'right';
 
@@ -32,39 +33,22 @@ export type TrezorLogoType = 'horizontal' | 'vertical' | 'symbol' | 'suite' | 's
 
 export type TrezorLogoVariant = 'white' | 'black';
 
-export interface SuiteThemeColors {
-    NEUE_BG_GREEN: string;
-    NEUE_BG_GREEN_HOVER: string;
-    NEUE_BG_LIGHT_GREEN: string;
-    NEUE_BG_LIGHT_GREEN_HOVER: string;
-    NEUE_BG_GREY: string;
-    NEUE_BG_LIGHT_GREY: string;
-    NEUE_BG_GREY_ALT: string;
-    NEUE_BG_WHITE: string;
-    NEUE_BG_LIGHT_RED: string;
-    NEUE_BG_TOOLTIP: string;
-    NEUE_BG_BLUE: string;
-    NEUE_BG_RED: string;
+type LightThemeProps = typeof THEME.light;
+type DarkThemeProps = typeof THEME.dark;
 
-    NEUE_TYPE_GREEN: string;
-    NEUE_TYPE_ORANGE: string;
-    NEUE_TYPE_BLUE: string;
-    NEUE_TYPE_RED: string;
-    NEUE_TYPE_DARK_GREY: string;
-    NEUE_TYPE_LIGHT_GREY: string;
-    NEUE_TYPE_LIGHTER_GREY: string;
-    NEUE_TYPE_WHITE: string;
+// extracts values for common props (eg. NEUE_BG_GREEN: "#39a814" | "#5ea447")
+type CommonThemeProps = {
+    [K in keyof LightThemeProps & keyof DarkThemeProps]: LightThemeProps[K] | DarkThemeProps[K];
+};
 
-    NEUE_SCROLLBAR_THUMB: string;
-    NEUE_STROKE_GREY: string;
-    NEUE_STROKE_LIGHT_GREY: string;
+// type ColorNamesOnlyInDark = {
+//     [K in keyof DarkThemeProps]: K extends keyof ColorNamesLight ? never : DarkThemeProps[K];
+// };
 
-    BUTTON_RED: string;
-    BUTTON_RED_HOVER: string;
+type PropsOnlyInLightTheme = Omit<LightThemeProps, keyof DarkThemeProps>;
+type PropsOnlyInDarkTheme = Omit<DarkThemeProps, keyof LightThemeProps>;
 
-    BOX_SHADOW_BLACK_15: string;
-    BOX_SHADOW_BLACK_20: string;
-    BOX_SHADOW_MODAL: string;
-
-    IMAGE_FILTER?: string;
-}
+// all common theme props and their values are nicely listed, props that are specific to given theme are marked optional
+export type SuiteThemeColors = CommonThemeProps &
+    Partial<PropsOnlyInDarkTheme> &
+    Partial<PropsOnlyInLightTheme>;

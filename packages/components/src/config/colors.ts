@@ -1,7 +1,5 @@
-import { DefaultTheme } from 'styled-components';
-import { SuiteThemeColors } from '../support/types';
-
-export const THEME: Record<'light' | 'dark', DefaultTheme> = {
+// TODO: button hover color could be derived from its based color by applying something like opacity/darkening
+export const THEME = {
     light: {
         NEUE_BG_GREEN: '#39a814',
         NEUE_BG_LIGHT_GREEN: '#effaec',
@@ -79,6 +77,6 @@ const oldColors = {
     RED: '#cd4949', // used by password strength indicator
 } as const;
 
-const colors = { ...oldColors, ...(THEME.light as SuiteThemeColors) } as const;
+const colors = { ...oldColors, ...THEME.light } as const;
 
 export default colors;
