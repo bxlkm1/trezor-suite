@@ -102,7 +102,7 @@ const WalletInstance = ({
             <Col grow={1} onClick={() => selectDeviceInstance(instance)}>
                 {discoveryProcess && (
                     <InstanceType>
-                        {!instance.useEmptyPassphrase && (
+                        {!instance.useEmptyPassphrase && instance.features.passphrase_protection && (
                             <LockIcon
                                 icon="LOCK_ACTIVE"
                                 color={colors.NEUE_TYPE_DARK_GREY}
@@ -125,8 +125,8 @@ const WalletInstance = ({
                                 }}
                             />
                         ) : (
-                            <WalletLabeling device={instance} />
-                        )}
+                                <WalletLabeling device={instance} />
+                            )}
                     </InstanceType>
                 )}
                 {!discoveryProcess && (
@@ -154,13 +154,15 @@ const WalletInstance = ({
                     <SwitchCol>
                         <Switch
                             checked={!!instance.remember}
-                            onChange={() =>
-                                rememberDevice(instance) &&
+                            onChange={() => {
+                                rememberDevice(instance);
                                 analytics.report({
                                     type: instance.remember
                                         ? 'switch-device/forget'
                                         : 'switch-device/remember',
                                 })
+                            }
+
                             }
                             data-test={`${getDataTestBase()}/toggle-remember-switch`}
                         />
@@ -171,11 +173,13 @@ const WalletInstance = ({
                             icon="EJECT"
                             size={22}
                             color={colors.NEUE_TYPE_LIGHT_GREY}
-                            onClick={() =>
-                                forgetDevice(instance) &&
+                            onClick={() => {
+                                forgetDevice(instance);
                                 analytics.report({
                                     type: 'switch-device/eject',
                                 })
+                            }
+
                             }
                         />
                     </ColEject>

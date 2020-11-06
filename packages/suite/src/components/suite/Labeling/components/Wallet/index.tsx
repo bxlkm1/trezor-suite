@@ -13,7 +13,7 @@ const Wallet = (props: Props) => {
     if (device.state) {
         label = (
             <Translation
-                {...(device.useEmptyPassphrase
+                {...(device.useEmptyPassphrase && device.features.passphrase_protection
                     ? { id: 'TR_NO_PASSPHRASE_WALLET' }
                     : { id: 'TR_PASSPHRASE_WALLET', values: { id: device.instance } })}
             />

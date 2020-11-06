@@ -344,6 +344,7 @@ const forget = (draft: State, device: TrezorDevice) => {
     if (device.connected && others.length < 1) {
         // do not forget the last instance, just reset state
         draft[index].state = undefined;
+        // here
         draft[index].useEmptyPassphrase = !device.features.passphrase_protection;
         draft[index].passphraseOnDevice = false;
         // set remember to false to make it disappear after device is disconnected
