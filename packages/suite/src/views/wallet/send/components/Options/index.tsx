@@ -19,7 +19,7 @@ const Content = styled.div`
 const Line = styled.div`
     width: 100%;
     height: 1px;
-    border-top: 1px solid ${props => props.theme.NEUE_BG_GREY};
+    border-top: 1px solid ${props => props.theme.NEUE_STROKE_GREY};
     margin-top: 10px;
 `;
 

@@ -21,7 +21,6 @@ interface InputProps extends Props {
 }
 
 const StyledInput = styled.input<InputProps>`
-    /* text-indent: ${props => props.textIndent}px; */
     font-family: ${variables.FONT_FAMILY.TTHOVES};
     font-weight: ${variables.FONT_WEIGHT.MEDIUM};
     /*  this is a bit messy, but basically we want to add textIndent to left/right paddings */

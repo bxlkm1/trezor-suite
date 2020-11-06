@@ -71,11 +71,9 @@ export const THEME: Record<'light' | 'dark', DefaultTheme> = {
 
 const oldColors = {
     // TODO: some colors from old design that are waiting to be reworked into NEUE design
-    GREEN: '#30C101',
-    YELLOW: '#fdcb33',
-    BLUE: '#1faaff',
-    RED: '#cd4949',
-    WHITE: '#ffffff',
+    GREEN: '#30C101', // used by password strength indicator
+    YELLOW: '#fdcb33', // used by password strength indicator
+    RED: '#cd4949', // used by password strength indicator
 } as const;
 
 const colors = { ...oldColors, ...(THEME.light as SuiteThemeColors) } as const;

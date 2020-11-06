@@ -1,8 +1,6 @@
 import { css } from 'styled-components';
 
 const scrollbarStyles = css`
-    /* TODO: this make nice scrollbar on webkit-like browsers however it prevents hiding the scrollbar on macs (should hide when there is no mouse connected) */
-    /* Maybe we should just use something like https://github.com/Grsmto/simplebar */
     ::-webkit-scrollbar {
         background-color: ${props => props.theme.NEUE_BG_WHITE};
         width: 10px;
@@ -24,6 +22,9 @@ const scrollbarStyles = css`
     ::-webkit-scrollbar-button {
         display: none;
     }
+
+    /* firefox, first one is thumb, second color is track */
+    scrollbar-color: ${props => props.theme.NEUE_SCROLLBAR_THUMB} transparent;
 `;
 
 export { scrollbarStyles };

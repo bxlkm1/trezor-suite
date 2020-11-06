@@ -75,7 +75,7 @@ const HeaderItem = styled(GridItem)`
     color: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
     font-weight: 500;
     padding: 12px 0px;
-    color: ${props => props.theme.NEUE_BG_WHITE};
+    background: ${props => props.theme.NEUE_BG_WHITE};
 `;
 
 const Actions = styled.div`

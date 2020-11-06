@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, colors, SuiteThemeColors, useTheme } from '@trezor/components';
+import { Icon, SuiteThemeColors, useTheme } from '@trezor/components';
 
 const getBgColor = (variant: Props['variant'], theme: SuiteThemeColors) => {
     switch (variant) {
@@ -31,7 +31,7 @@ const Wrapper = styled.div<{ variant: Props['variant'] }>`
     padding: 16px;
 
     & + & {
-        border-top: 1px solid ${colors.NEUE_TYPE_WHITE};
+        border-top: 1px solid ${props => props.theme.NEUE_BG_WHITE};
     }
 `;
 

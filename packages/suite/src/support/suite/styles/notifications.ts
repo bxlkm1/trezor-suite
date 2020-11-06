@@ -95,19 +95,19 @@ export const notifications = `
     }
 
     .Toastify__toast--info {
-        background: ${colors.BLUE};
+        background: ${colors.NEUE_BG_LIGHT_GREY};
     }
 
     .Toastify__toast--success {
-        background: ${colors.GREEN};
+        background: ${colors.NEUE_BG_LIGHT_GREY};
     }
 
     .Toastify__toast--warning {
-        background: ${colors.YELLOW};
+        background: ${colors.NEUE_BG_LIGHT_GREY};
     }
 
     .Toastify__toast--error {
-        background: ${colors.RED};
+        background: ${colors.NEUE_BG_LIGHT_GREY};
     }
 
     .Toastify__toast-body {
@@ -182,7 +182,7 @@ export const notifications = `
     }
 
     .Toastify__progress-bar--default {
-        background: ${colors.WHITE};
+        background: ${colors.NEUE_BG_WHITE};
     }
 
     @keyframes Toastify__bounceInRight {
