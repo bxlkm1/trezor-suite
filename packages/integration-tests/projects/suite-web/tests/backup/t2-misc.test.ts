@@ -15,7 +15,7 @@ describe('Backup', () => {
     });
 
     it('Backup should reset if modal is closed', () => {
-        cy.getTestElement('@notification/no-backup/button').click();
+        cy.getTestElement('@notification/no-backup/button').click({ force: true });
         cy.getTestElement('@backup/check-item/understands-what-seed-is').click();
         cy.getTestElement('@backup/close-button').click();
         cy.getTestElement('@notification/no-backup/button').click();
@@ -26,7 +26,7 @@ describe('Backup', () => {
     });
 
     it('User is doing backup with device A -> disconnects device A -> connects device B with backup already finished', () => {
-        cy.getTestElement('@notification/no-backup/button').click();
+        cy.getTestElement('@notification/no-backup/button').click({ force: true });
         cy.getTestElement('@backup/check-item/has-enough-time').click();
         cy.task('stopEmu');
         cy.getTestElement('@backup/no-device', { timeout: 20000 });
@@ -46,8 +46,7 @@ describe('Backup', () => {
             force: true,
         });
         cy.getTestElement('@switch-device/wallet-instance').click();
-        cy.wait(1000);
-        cy.getTestElement('@notification/no-backup/button').click();
+        cy.getTestElement('@notification/no-backup/button').click({ force: true });
         cy.getTestElement('@backup/check-item/understands-what-seed-is').click();
         cy.getTestElement('@backup/check-item/has-enough-time').click();
         cy.getTestElement('@backup/check-item/is-in-private').click();
