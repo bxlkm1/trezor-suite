@@ -39,7 +39,7 @@ const StyledInput = styled.input<InputProps>`
     color: ${props => getStateColor(props.state, props.theme)};
 
     &:read-only {
-        background: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
+        background: ${props => props.theme.NEUE_BG_LIGHT_GREY};
         box-shadow: none;
         color: ${props => props.theme.NEUE_TYPE_DARK_GREY};
     }
@@ -64,7 +64,7 @@ const StyledInput = styled.input<InputProps>`
     ${props =>
         props.disabled &&
         css`
-            background: ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
+            background: ${props => props.theme.NEUE_BG_GREY};
             box-shadow: none;
             color: ${props => props.theme.NEUE_TYPE_DARK_GREY};
             cursor: default;

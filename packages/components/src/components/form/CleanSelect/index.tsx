@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactSelect, { Props as SelectProps } from 'react-select';
+import { scrollbarStyles } from '../../Scrollbar';
 import { variables } from '../../../config';
 import { InputVariant, SuiteThemeColors } from '../../../support/types';
 import { useTheme } from '../../../utils';
@@ -9,6 +10,10 @@ const Wrapper = styled.div`
     .react-select__single-value {
         position: static;
         transform: none;
+    }
+
+    .react-select__menu-list {
+        ${scrollbarStyles}
     }
 `;
 
@@ -24,6 +29,7 @@ const getDropdownVisibility = (isDisabled: boolean, isFocused: boolean, isHovere
     return 'none';
 };
 
+// TODO: share common styles from base select, there is too much duplication
 const selectStyle = (
     isDropdownVisible: boolean,
     isHovered: boolean,
@@ -89,11 +95,12 @@ const selectStyle = (
         ...base,
         minWidth: '85px',
         color: theme.NEUE_TYPE_LIGHT_GREY,
-        background: 'white',
         boxShadow: '0 4px 10px 0 rgba(0, 0, 0, 0.15)',
     }),
     menuList: (base: Record<string, any>) => ({
         ...base,
+        background: theme.NEUE_BG_WHITE,
+        padding: 0,
     }),
     option: (base: Record<string, any>, { isFocused }: { isFocused: boolean }) => ({
         ...base,

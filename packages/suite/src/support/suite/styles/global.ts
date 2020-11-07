@@ -1,6 +1,11 @@
 import animations from './animations';
 import { notifications } from './notifications';
-import { variables, tooltipGlobalStyles, SuiteThemeColors } from '@trezor/components';
+import {
+    variables,
+    tooltipGlobalStyles,
+    SuiteThemeColors,
+    scrollbarStyles,
+} from '@trezor/components';
 import { createGlobalStyle } from 'styled-components';
 
 const globalStyles = createGlobalStyle<{ theme: SuiteThemeColors }>`
@@ -46,6 +51,7 @@ const globalStyles = createGlobalStyle<{ theme: SuiteThemeColors }>`
     ${animations}
     ${notifications}
     ${props => tooltipGlobalStyles(props)}
+    ${scrollbarStyles}
 `;
 
 export default globalStyles;

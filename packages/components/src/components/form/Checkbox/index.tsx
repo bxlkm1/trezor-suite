@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
     &:hover {
         > div:first-child {
-            border: 1px solid ${props => props.theme.NEUE_TYPE_LIGHT_GREY};
+            border: 1px solid ${props => props.theme.NEUE_TYPE_DARK_GREY};
         }
     }
 `;
@@ -36,7 +36,8 @@ const IconWrapper = styled.div<IconWrapperProps>`
     background: ${props =>
         props.isChecked ? props.theme.NEUE_BG_GREEN : props.theme.NEUE_BG_WHITE};
     border: 1px solid
-        ${props => (props.isChecked ? props.theme.NEUE_TYPE_GREEN : props.theme.NEUE_STROKE_GREY)};
+        ${props =>
+            props.isChecked ? props.theme.NEUE_TYPE_GREEN : props.theme.NEUE_TYPE_LIGHT_GREY};
 
     &:hover,
     &:focus {

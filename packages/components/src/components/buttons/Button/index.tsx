@@ -113,7 +113,7 @@ const Wrapper = styled.button<WrapperProps>`
     ${props =>
         props.variant === 'danger' &&
         css`
-            color: ${props => props.theme.NEUE_BG_WHITE};
+            color: ${props => props.theme.NEUE_TYPE_WHITE};
             font-weight: ${variables.FONT_WEIGHT.DEMI_BOLD};
             background: ${props => props.theme.BUTTON_RED};
 

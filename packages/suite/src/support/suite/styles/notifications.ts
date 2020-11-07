@@ -68,7 +68,7 @@ export const notifications = `
 
     .Toastify__toast {
         position: relative;
-        background: white;
+        background: ${colors.NEUE_BG_WHITE};
         min-height: 50px;
         box-sizing: border-box;
         margin-bottom: 1rem;

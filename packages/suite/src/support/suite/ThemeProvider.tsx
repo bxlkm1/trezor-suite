@@ -7,7 +7,7 @@ import { db } from '@suite/storage';
 import { SuiteThemeVariant, AppState } from '@suite-types';
 
 const getThemeColors = (theme: AppState['suite']['settings']['theme']) => {
-    switch (theme.variant) {
+    switch (theme?.variant) {
         case 'light':
             return THEME.light;
         case 'dark':
@@ -18,7 +18,8 @@ const getThemeColors = (theme: AppState['suite']['settings']['theme']) => {
                 ...THEME.dark, // spread default colors, so we can be sure no new colors are missing in user's palette
                 ...theme.colors, // custom saved colors
             };
-        // no default
+        default:
+            return THEME.light;
     }
 };
 

@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+// For nice scrollbars in Chrome put these styles in the global stylesheet.
+// For Firefox you need to apply `scrollbar-color` prop on per element basis
 const scrollbarStyles = css`
     ::-webkit-scrollbar {
         background-color: ${props => props.theme.NEUE_BG_WHITE};

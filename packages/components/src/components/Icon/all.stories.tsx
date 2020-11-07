@@ -40,7 +40,6 @@ storiesOf('Icons', module).add(
                         <IconText>{icon}</IconText>
                         <Icon
                             icon={icon}
-                            color={colors.NEUE_TYPE_DARK_GREY}
                             data-test={`icon-${icon.toLowerCase().replace('_', '-')}`}
                         />
                     </IconWrapper>
