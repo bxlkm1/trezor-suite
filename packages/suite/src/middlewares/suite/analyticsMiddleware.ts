@@ -2,7 +2,7 @@
 
 import { MiddlewareAPI } from 'redux';
 import { TRANSPORT, DEVICE } from 'trezor-connect';
-import { SUITE, STORAGE } from '@suite-actions/constants';
+import { SUITE, STORAGE, ROUTER } from '@suite-actions/constants';
 import { ACCOUNT } from '@wallet-actions/constants';
 
 import { AppState, Action, Dispatch } from '@suite-types';
@@ -24,6 +24,7 @@ import {
 const analytics = (api: MiddlewareAPI<Dispatch, AppState>) => (next: Dispatch) => (
     action: Action,
 ) => {
+    const prevRouterUrl = api.getState().router.url;
     // pass action
     next(action);
 
@@ -67,7 +68,8 @@ const analytics = (api: MiddlewareAPI<Dispatch, AppState>) => (next: Dispatch) =
                         payload: {
                             mode,
                             firmware: `${features.major_version}.${features.minor_version}.${features.patch_version}`,
-                            // backup_type: features.backup_type || 'Bip39', // @ts-ignore todo add to features types, missing
+                            // @ts-ignore todo add to features types in connect https://github.com/trezor/connect/pull/702
+                            backup_type: features.backup_type || 'Bip39',
                             pin_protection: features.pin_protection,
                             passphrase_protection: features.passphrase_protection,
                             totalInstances: api.getState().devices.length,
@@ -135,6 +137,18 @@ const analytics = (api: MiddlewareAPI<Dispatch, AppState>) => (next: Dispatch) =
                     },
                 }),
             );
+            break;
+        case ROUTER.LOCATION_CHANGE:
+            api.dispatch(
+                analyticsActions.report({
+                    type: 'router/location-change',
+                    payload: {
+                        prevRouterUrl,
+                        nextRouterUrl: action.url,
+                    },
+                }),
+            );
+
             break;
         default:
             break;

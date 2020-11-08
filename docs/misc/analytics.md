@@ -47,10 +47,14 @@ Breaking change should bump major version. Any other change bumps minor version.
 
 ## Changelog
 
-### 1.0.
-- initial version 
+### 1.2
+- device-connect
+  - backup_type
+- router/location-change
+  - prevRouterUrl
+  - nextRouterUrl
 
-### 1.1.
+### 1.1
 Added:
 - device-update-firmware:
   - toFwVersion
@@ -59,3 +63,7 @@ Added:
   - platform
 - device-connect:
   - totalInstances
+
+### 1.0
+- initial version 
+

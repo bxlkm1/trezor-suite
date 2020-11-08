@@ -28,7 +28,7 @@ simple semver for data-analytics part.
 Don't forget to update docs with changelog!
 */
 
-const version = '1.1';
+const version = '1.2';
 
 export type AnalyticsEvent =
     | {
@@ -65,6 +65,8 @@ export type AnalyticsEvent =
               pin_protection: boolean;
               passphrase_protection: boolean;
               totalInstances: number;
+              // todo:
+              backup_type: any;
           };
       }
     | {
@@ -222,6 +224,13 @@ export type AnalyticsEvent =
           type: 'settings/general/change-fiat';
           payload: {
               fiat: string;
+          };
+      }
+    | {
+          type: 'router/location-change';
+          payload: {
+              prevRouterUrl: string;
+              nextRouterUrl: string;
           };
       };
 
