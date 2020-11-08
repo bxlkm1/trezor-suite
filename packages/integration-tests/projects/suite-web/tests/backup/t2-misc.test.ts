@@ -18,7 +18,7 @@ describe('Backup', () => {
         cy.getTestElement('@notification/no-backup/button').click({ force: true });
         cy.getTestElement('@backup/check-item/understands-what-seed-is').click();
         cy.getTestElement('@backup/close-button').click();
-        cy.getTestElement('@notification/no-backup/button').click();
+        cy.getTestElement('@notification/no-backup/button').click({ force: true });
         cy.log(
             'at this moment, after modal was closed and opened again, no checkbox should be checked',
         );
