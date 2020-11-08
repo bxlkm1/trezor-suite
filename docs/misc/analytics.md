@@ -53,6 +53,9 @@ Breaking change should bump major version. Any other change bumps minor version.
 - router/location-change
   - prevRouterUrl
   - nextRouterUrl
+- session-end
+  - start
+  - end
 
 ### 1.1
 Added:

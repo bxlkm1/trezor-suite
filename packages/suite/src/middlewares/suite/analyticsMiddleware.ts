@@ -148,7 +148,6 @@ const analytics = (api: MiddlewareAPI<Dispatch, AppState>) => (next: Dispatch) =
                     },
                 }),
             );
-
             break;
         default:
             break;

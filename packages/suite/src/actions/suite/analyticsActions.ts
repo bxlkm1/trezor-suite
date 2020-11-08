@@ -18,7 +18,12 @@ export type AnalyticsAction =
     | { type: typeof ANALYTICS.DISPOSE }
     | {
           type: typeof ANALYTICS.INIT;
-          payload: { instanceId: string; sessionId: string; enabled: boolean };
+          payload: {
+              instanceId: string;
+              sessionId: string;
+              enabled: boolean;
+              sessionStart: number;
+          };
       };
 
 /**
@@ -232,6 +237,15 @@ export type AnalyticsEvent =
               prevRouterUrl: string;
               nextRouterUrl: string;
           };
+      }
+    | {
+          type: 'session-end';
+          payload: {
+              // unix timestamp when session started
+              start: number;
+              // unix timestamp when session ended
+              end: number;
+          };
       };
 
 const getUrl = () => {
@@ -326,6 +340,7 @@ export const init = (loadedState: State, optout: boolean) => (
         payload: {
             instanceId,
             sessionId,
+            sessionStart: Date.now(),
             enabled,
         },
     });
@@ -333,8 +348,19 @@ export const init = (loadedState: State, optout: boolean) => (
     if (!getState().analytics.enabled) return;
     // 6. error logging to sentry
     setSentryUser(instanceId);
-    // 7. register event listeners to report events from electron
-    // todo:
+    // 7. register event listeners
+    // @ts-ignore. how do we handle native with respect to window specific event listeners?
+    window.addEventListener('beforeunload', () => {
+        dispatch(
+            report({
+                type: 'session-end',
+                payload: {
+                    start: getState().analytics.sessionStart!,
+                    end: Date.now(),
+                },
+            }),
+        );
+    });
 };
 
 export const enable = (): AnalyticsAction => ({
