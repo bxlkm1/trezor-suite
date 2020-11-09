@@ -21,7 +21,7 @@
         "next": "^9.5.3",
         "next-redux-wrapper": "^5.0.0",
         "styled-components": "5.1.1",
-        "worker-loader": "^3.0.2"
+        "worker-loader": "^3.0.5"
     },
     "devDependencies": {
         "babel-plugin-styled-components": "1.11.1",
