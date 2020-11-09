@@ -19,7 +19,7 @@ unit tests:
     script:
         - lerna run --stream test:unit -- --passWithNoTests
 
-yaml lint:
+yaml lint:  
     stage: prebuild
     image: registry.gitlab.com/satoshilabs/trezor/trezor-user-env/trezor-user-env
     needs: []
