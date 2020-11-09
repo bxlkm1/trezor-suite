@@ -33,3 +33,10 @@ export const getPlatformLanguage = () => {
 
 export const isDesktop = () => false;
 export const isWeb = () => false;
+
+/**
+ * override for suite/utils/env - setOnBeforeUnloadListener
+ */
+export const setOnBeforeUnloadListener = (_callback: () => void) => {
+    // todo:
+};

@@ -9,7 +9,7 @@ import { Dispatch, GetState, AppState, TrezorDevice } from '@suite-types';
 import { getAnalyticsRandomId } from '@suite-utils/random';
 import { encodeDataToQueryString } from '@suite-utils/analytics';
 import { Account } from '@wallet-types';
-import { isDesktop, isWeb } from '@suite-utils/env';
+import { isDesktop, isWeb, setOnBeforeUnloadListener } from '@suite-utils/env';
 import { setSentryUser } from '@suite-utils/sentry';
 import { State } from '@suite-reducers/analyticsReducer';
 
@@ -70,8 +70,7 @@ export type AnalyticsEvent =
               pin_protection: boolean;
               passphrase_protection: boolean;
               totalInstances: number;
-              // todo:
-              backup_type: any;
+              backup_type: string;
           };
       }
     | {
@@ -349,8 +348,7 @@ export const init = (loadedState: State, optout: boolean) => (
     // 6. error logging to sentry
     setSentryUser(instanceId);
     // 7. register event listeners
-    // @ts-ignore. how do we handle native with respect to window specific event listeners?
-    window.addEventListener('beforeunload', () => {
+    setOnBeforeUnloadListener(() => {
         dispatch(
             report({
                 type: 'session-end',
