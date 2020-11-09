@@ -1,7 +1,7 @@
 # number of utility scripts that are nice and useful but perfectly ok if they run only once a day :]
 suite misc:
     # only:
-    #     - schedules
+        # - schedules
     stage: misc
     allow_failure: true
     script:
